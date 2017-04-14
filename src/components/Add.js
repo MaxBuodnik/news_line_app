@@ -50,7 +50,7 @@ class Add extends Component {
 
     console.log(my_news);
 
-    window.ee.emit('add', item);
+    this.props.onAdd(item);
 
     ReactDOM.findDOMNode(this.refs.text).value = '';
     this.setState({textIsEmpty: true});
