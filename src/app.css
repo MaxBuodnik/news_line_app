@@ -42,6 +42,10 @@ p {
     display: none;
 }
 
+.news__text {
+    display: none;
+}
+
 .add cf {
     margin: 0 5px 5px 0;
 }

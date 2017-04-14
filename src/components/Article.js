@@ -23,7 +23,7 @@ class Article extends Component {
     return (
       <div className='article'>
         <p className='news__author'>{author}:</p>
-        <p className='news__text'>{text}</p>
+        <p className={'news__text' + (visible ? '' : "none")}>{text}</p>
         <a href='#' className={'news__readmore' + (visible ? "none" : "")} onClick={this.readMoreClick}>Read more</a>
         <p className={'news__big-text' + (visible ? "" : "none")}>{bigText}</p>
         <a href='#' className={'hide__news' + (visible ? "" : "none")} onClick={this.hideMoreClick}>Hide</a>

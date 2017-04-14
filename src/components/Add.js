@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import my_news from "../my_news.js"
-import News from "./News.js";
-import { EventEmitter } from 'events';
+//import { EventEmitter } from 'events';
 
 
 class Add extends Component {
@@ -48,7 +46,9 @@ class Add extends Component {
       bigText: text
     };
 
-    console.log(my_news);
+
+
+    console.log(this.props)
 
     this.props.onAdd(item);
 
