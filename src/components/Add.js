@@ -1,11 +1,16 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import my_news from "../my_news.js"
+import PropTypes from 'prop-types';
 import News from "./News.js";
 import { EventEmitter } from 'events';
 
 
 class Add extends Component {
+  static contextTypes = {
+    onAdd: PropTypes.func
+  }
+
   constructor(props) {
     super(props);
     //this.onFieldChange = this.onFieldChange.bind(this);
@@ -50,7 +55,8 @@ class Add extends Component {
 
     console.log(my_news);
 
-    window.ee.emit('add', item);
+    // window.ee.emit('add', item);
+    this.context.onAdd(item);
 
     ReactDOM.findDOMNode(this.refs.text).value = '';
     this.setState({textIsEmpty: true});
@@ -62,6 +68,9 @@ class Add extends Component {
   }
 
   render() {
+    console.log(this.context);
+
+
     return (
       <form className='add cf'>
         <input type='text' className="add__author" placeholder="Your name" ref="author"

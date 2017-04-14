@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import './app.css';
 import Add from './components/Add.js'
 import News from './components/News.js'
@@ -13,17 +14,27 @@ class App extends Component {
     news: my_news
   };
 
-
-  componentDidMount() {
-    ee.on('add', (item) => {
-      this.setState({
-        news: [...this.state.news, item] });
-    });
+  static childContextTypes = {
+    onAdd: PropTypes.func
   }
 
-  componentWillUnmount() {
-    ee.removeAllListeners();
-    window.ee = null;
+  // componentDidMount() {
+  //   ee.on('add', (item) => {
+  //
+  // }
+
+  // componentWillUnmount() {
+  //   ee.removeAllListeners();
+  //   window.ee = null;
+  // }
+
+  getChildContext() {
+    return {
+      onAdd: (item) => {
+        this.setState({
+          news: [...this.state.news, item] });
+      }
+    }
   }
 
   render() {
